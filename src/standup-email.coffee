@@ -45,7 +45,7 @@ postEmail = (robot, group, room, response, logs) ->
   try
     nodemailer = require 'nodemailer'
   catch
-    response.send "Could not find nodemailer module to send emaail"
+    response.send "Could not find nodemailer module to send email"
     return
 
   try

@@ -128,7 +128,7 @@ module.exports = (robot) ->
 
   robot.respond /standup\?? *$/i, (msg) ->
     sendWithLog robot, msg, """
-             <who> is a member of <team> - tell hubot who is the member of <team>'s standup
+             <user> has <team> role - tell johnny-5 who is the member of <team>'s standup
              show standup members for <team> - list all of the members of <team>'s standup
              show standups - list of all standups defined by user roles for any room
              standup for <team> - start the standup for <team>
