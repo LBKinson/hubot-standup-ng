@@ -87,7 +87,7 @@ module.exports = (robot) ->
         log: [],
       }
       who = attendees.map((user) -> user.name).join(', ')
-      sendWithLog robot, msg, "Ok, let's start the standup: #{who}"
+      sendWithLog robot, msg, "Ok, let's start the standup: @#{who}"
       nextPerson robot, room, msg
     else
       sendWithLog robot, msg, "Oops, can't find anyone with 'a #{group} member' role!"
