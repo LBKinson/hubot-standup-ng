@@ -90,7 +90,7 @@ module.exports = (robot) ->
       sendWithLog robot, msg, "Ok, let's start the standup: @#{who}"
       nextPerson robot, room, msg
     else
-      sendWithLog robot, msg, "Oops, can't find anyone with 'a #{group} member' role!"
+      sendWithLog robot, msg, "Oops something's wrong, can't find anyone with 'a #{group} member' role!"
 
   robot.respond /(?:that\'s it|next(?: person)?|done) *$/i, (msg) ->
     unless robot.brain.data.standup?[msg.message.user.room]
