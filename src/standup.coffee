@@ -162,6 +162,7 @@ nextPerson = (robot, room, msg) ->
     try
       robot.brain.emit 'standupLog', standup.group, room, msg, standup.log
     catch
+      sendWithLog robot, msg, "Standup log failed"
       console.log "standupLog event failed"
     delete robot.brain.data.standup[room]
   else
