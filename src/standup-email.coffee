@@ -70,14 +70,14 @@ postEmail = (robot, group, room, response, logs) ->
     body = makeBody robot, group, logs
     date = new Date(logs[0].time)
 
-    mailoptions =  {
+    mailOptions =  {
       from: process.env.HUBOT_STANDUP_EMAIL_ORIGIN_ADDRESS
       to: emailaddress
       subject: "Standup logs for #{group} for #{date.toLocaleDateString()}"
       text: body
     }
 
-    transporter.sendMail mailoptions, (error, msg) ->
+    transporter.sendMail mailOptions, (error, msg) ->
       if error
         response.send "Posting to the group #{group} FAILED - #{error}"
       else
