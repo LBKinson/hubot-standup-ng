@@ -158,7 +158,10 @@ nextPerson = (robot, room, msg) ->
   standup = robot.brain.data.standup[room]
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
+    date = new Date(logs[0].time)
+    originAddress = process.env.HUBOT_STANDUP_EMAIL_ORIGIN_ADDRESS
     sendWithLog robot, msg, "All done! Standup was #{howlong}."
+    sendWithLog robot, msg, "johnny-5 email #{originAddress} -s <Standup logs for #{group} for #{date.toLocaleDateString()}> -m <message - change this if it works!>"
     try
       robot.brain.emit 'standupLog', standup.group, room, msg, standup.log
     catch
