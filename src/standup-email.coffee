@@ -72,7 +72,7 @@ postEmail = (robot, group, room, response, logs) ->
 
     mailoptions =  {
       from: process.env.HUBOT_STANDUP_EMAIL_ORIGIN_ADDRESS
-      to: process.env.HUBOT_STANDUP_EMAIL_DESTINATION_ADDRESS
+      to: emailaddress
       subject: "Standup logs for #{group} for #{date.toLocaleDateString()}"
       text: body
     }
