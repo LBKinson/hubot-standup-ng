@@ -142,7 +142,7 @@ module.exports = (robot) ->
   robot.respond /standupEmail\?? *$/i, (msg) ->
     date = new Date(logs[0].time)
     originAddress = process.env.HUBOT_STANDUP_EMAIL_ORIGIN_ADDRESS
-    sendWithLog robot, msg, "johnny-5 email #{originAddress} -s <Standup logs for #{group} for #{date.toLocaleDateString()}> -m <message - change this if it works!>"
+    msg.reply "johnny-5 email #{originAddress} -s <Standup logs for #{group} for #{date.toLocaleDateString()}> -m <message - change this if it works!>"
 
   robot.hear /(.*)/, (msg) ->
     current_standup = robot.brain.data.standup?[msg.message.user.room]
