@@ -139,7 +139,7 @@ module.exports = (robot) ->
              no standup emails for <team> - disable emails for that team
              email <team> standup logs to <email address> - set email destination for standup log
              """
-  robot.resopnd /standupEmail\?? *$/i, (msg) ->
+  robot.respond /standupEmail\?? *$/i, (msg) ->
     date = new Date(logs[0].time)
     originAddress = process.env.HUBOT_STANDUP_EMAIL_ORIGIN_ADDRESS
     sendWithLog robot, msg, "johnny-5 email #{originAddress} -s <Standup logs for #{group} for #{date.toLocaleDateString()}> -m <message - change this if it works!>"
