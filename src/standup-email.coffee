@@ -79,7 +79,7 @@ postEmail = (robot, group, room, response, logs) ->
 
     transporter.sendMail mailOptions, (error, msg) ->
       if error
-        response.send "Posting to the group #{group} FAILED - #{error}"
+        response.send "Posting to the #{group} email FAILED - #{error}"
       else
         response.send "Posting to email #{emailaddress}"
 
