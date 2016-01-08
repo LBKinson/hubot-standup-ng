@@ -164,7 +164,7 @@ nextPerson = (robot, room, msg) ->
       logMessage = "#{log.message.text}"
       console.log logMessage
       console.log logMessage.constructor.name
-      console.log logMessage.startsWith 'johnny-5'
+      console.log String(logMessage).startsWith 'johnny-5'
       if log.message.user.name == 'johnny-5' || String(logMessage).startsWith 'johnny-5'
         body += "\n"
       else
