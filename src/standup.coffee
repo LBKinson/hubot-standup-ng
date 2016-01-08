@@ -163,7 +163,7 @@ nextPerson = (robot, room, msg) ->
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
     
-    sendWithLog robot, msg, "All done! Standup was #{howlong}."
+    sendWithLog robot, msg, "All done! Standup was #{howlong}. Here's a summary: #{robot.brain.data.standup.log}"
     try
       robot.brain.emit 'standupLog', standup.group, room, msg, standup.log
     catch
