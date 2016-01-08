@@ -158,7 +158,7 @@ nextPerson = (robot, room, msg) ->
   standup = robot.brain.data.standup[room]
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
-    body = "Standup log: #{date.toLocaleDateString()}\n==================================\n"
+    body = "Standup log: \n==================================\n"
     for log in standup.log
       body += "(#{new Date(log.time).toLocaleTimeString()}) <#{log.message.user.name}> #{log.message.text}\n"
     sendWithLog robot, msg, "All done! Standup was #{howlong}. Here's a summary: #{body}"
