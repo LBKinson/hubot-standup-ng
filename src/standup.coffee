@@ -161,7 +161,7 @@ nextPerson = (robot, room, msg) ->
     body = "Standup log for (#{new Date().getDay()}): \n==================================\n"
     
     for log in standup.log
-      logMessage = '#{log.message.text}'
+      logMessage = String(log.message.text)
       if log.message.user.name == 'johnny-5' || logMessage.startsWith('johnny-5')
         # blank line
         body += "\n"
