@@ -161,7 +161,7 @@ nextPerson = (robot, room, msg) ->
     body = "Standup log for (#{new Date().getDay()}): \n==================================\n"
     
     for log in standup.log
-      logMessage = log.message.text
+      logMessage = "#{log.message.text}"
       console.log logMessage
       console.log logMessage.constructor.name
       console.log logMessage.startsWith('johnny-5')
