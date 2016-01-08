@@ -164,8 +164,8 @@ nextPerson = (robot, room, msg) ->
       logMessage = "#{log.message.text}"
       console.log logMessage
       console.log logMessage.constructor.name
-      console.log logMessage.startsWith('johnny-5')
-      if log.message.user.name == 'johnny-5' || logMessage.startsWith 'johnny-5'
+      console.log logMessage.startsWith 'johnny-5'
+      if log.message.user.name == 'johnny-5' || String(logMessage).startsWith 'johnny-5'
         body += "\n"
       else
         body += "(#{new Date(log.time).toLocaleTimeString()}) <#{log.message.user.name}> #{log.message.text}\n"
