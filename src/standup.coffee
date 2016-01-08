@@ -159,9 +159,9 @@ nextPerson = (robot, room, msg) ->
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
     body = "Standup log for (#{new Date().getDay()}): \n==================================\n"
-    message = log.message.text
+    logMessage = log.message.text
     for log in standup.log
-      if log.message.user.name == 'johnny-5' || '#{log.message.text}'.startsWith('johnny-5')
+      if log.message.user.name == 'johnny-5' || logMessage.startsWith('johnny-5')
         # blank line
         body += "\n"
       else
