@@ -158,17 +158,13 @@ nextPerson = (robot, room, msg) ->
   standup = robot.brain.data.standup[room]
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
-    body = "Standup log for (#{new Date().getDay()}): \n==================================\n"
+    body = "Standup log for (#{new Date().toDateString()}): \n==================================\n"
     
     for log in standup.log
-      # logMessage = "#{log.message.text}"
-      # console.log logMessage
-      # console.log logMessage.constructor.name
-      # console.log logMessage.toString().startsWith 'johnny-5'
-      if log.message.user.name == 'johnny-5' || log.message.text == 'johnny-5 next'
+      if log.message.user.name == 'johnny-5' || log.message.text == 'johnny-5 next' || log.message.text == 'johnny-5 standup for (dungeon | fpc | starwars)'
         body += "\n"
       else
-        body += "(#{new Date(log.time).toLocaleTimeString()}) <#{log.message.user.name}> #{log.message.text}\n"
+        body += "<#{log.message.user.name}> #{log.message.text}\n"
       
     sendWithLog robot, msg, "All done! Standup was #{howlong}. Here's a summary: #{body}"
     try
