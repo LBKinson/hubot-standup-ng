@@ -139,10 +139,6 @@ module.exports = (robot) ->
              no standup emails for <team> - disable emails for that team
              email <team> standup logs to <email address> - set email destination for standup log
              """
-  robot.respond /standupEmail\?? *$/i, (msg) ->
-    date = new Date(logs[0].time)
-    originAddress = process.env.HUBOT_STANDUP_EMAIL_ORIGIN_ADDRESS
-    msg.reply "johnny-5 email #{originAddress} -s <Standup logs for #{group} for #{date.toLocaleDateString()}> -m <message - change this if it works!>"
 
   robot.hear /(.*)/, (msg) ->
     current_standup = robot.brain.data.standup?[msg.message.user.room]
@@ -162,8 +158,15 @@ nextPerson = (robot, room, msg) ->
   standup = robot.brain.data.standup[room]
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
+    body = "Standup log for (#{new Date().toDateString()}): \n==================================\n"
     
-    sendWithLog robot, msg, "All done! Standup was #{howlong}."
+    for log in standup.log
+      if log.message.user.name == 'johnny-5' || log.message.text == 'johnny-5 next' || log.message.text == 'johnny-5 standup for (dungeon | fpc | starwars)'
+        body += "\n"
+      else
+        body += "<#{log.message.user.name}> #{log.message.text}\n"
+      
+    sendWithLog robot, msg, "All done! Standup was #{howlong}. Here's a summary: #{body}"
     try
       robot.brain.emit 'standupLog', standup.group, room, msg, standup.log
     catch
