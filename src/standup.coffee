@@ -84,7 +84,7 @@ module.exports = (robot) ->
         start: new Date().getTime(),
         attendees: attendees,
         remaining: shuffleArrayClone(attendees)
-        log: [],
+        log = [],
       }
       who = attendees.map((user) -> user.name).join(', ')
       sendWithLog robot, msg, "Ok, let's start the standup: #{who}"
@@ -159,7 +159,7 @@ nextPerson = (robot, room, msg) ->
   if standup.remaining.length == 0
     howlong = calcMinutes(new Date().getTime() - standup.start)
     
-    sendWithLog robot, msg, "All done! Standup was #{howlong}. Here's a summary: #{robot.brain.data.standup[room].log}"
+    sendWithLog robot, msg, "All done! Standup was #{howlong}. Here's a summary: #{log}"
     try
       robot.brain.emit 'standupLog', standup.group, room, msg, standup.log
     catch
