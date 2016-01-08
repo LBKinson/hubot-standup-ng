@@ -161,11 +161,11 @@ nextPerson = (robot, room, msg) ->
     body = "Standup log for (#{new Date().getDay()}): \n==================================\n"
     
     for log in standup.log
-      logMessage = "#{log.message.text}"
-      console.log logMessage
-      console.log logMessage.constructor.name
-      console.log logMessage.toString().startsWith 'johnny-5'
-      if log.message.user.name == 'johnny-5' || String(logMessage).startsWith 'johnny-5'
+      # logMessage = "#{log.message.text}"
+      # console.log logMessage
+      # console.log logMessage.constructor.name
+      # console.log logMessage.toString().startsWith 'johnny-5'
+      if log.message.user.name == 'johnny-5' || log.message.text == 'johnny-5 next'
         body += "\n"
       else
         body += "(#{new Date(log.time).toLocaleTimeString()}) <#{log.message.user.name}> #{log.message.text}\n"
